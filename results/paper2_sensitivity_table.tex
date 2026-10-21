@@ -1,0 +1,41 @@
+% Hyperparameter Sensitivity Analysis for Paper 2 (Diffusion + MoE-BFT)
+\begin{table*}[t]
+\centering
+\small
+\caption{Hyperparameter sensitivity analysis of the Resting-State Latent Diffusion and MoE-BFT framework across 9 subjects in zero-calibration evaluation. Pairwise statistical differences against the optimal configuration evaluated via Wilcoxon signed-rank test and Cohen's $d$. $^{*}p < 0.05$, $^{**}p < 0.01$, $^{***}p < 0.001$.}
+\label{tab:paper2_sensitivity}
+\begin{tabular}{llccccr}
+\toprule
+\textbf{Hyperparameter} & \textbf{Setting} & \textbf{Acc (\%) $\pm$ SD} & \textbf{Wilcoxon $p$} & \textbf{Cohen's $d$} & \textbf{$BF_{10}$} & \textbf{Sig.} \\
+\midrule
+\multicolumn{7}{l}{\textit{DDIM Sampling Steps}} \\
+  & S = 10 & 81.13 $\pm$ 2.43 & 0.0039 & -11.890 & 100000000.000 & ** \\
+  & \textbf{S = 25 (Default)} & \textbf{84.72 $\pm$ 2.15} & - & - & - & - \\
+  & S = 50 & 84.94 $\pm$ 2.12 & 0.0039 & 2.287 & 1961.982 & ** \\
+  & S = 100 & 85.04 $\pm$ 2.12 & 0.0039 & 3.316 & 38915.813 & ** \\
+\midrule
+\multicolumn{7}{l}{\textit{Guidance Scale (w)}} \\
+  & w = 0.0 (Uncond.) & 79.84 $\pm$ 2.47 & 0.0039 & -14.114 & 100000000.000 & ** \\
+  & w = 1.0 & 83.21 $\pm$ 2.39 & 0.0039 & -5.667 & 3858138.605 & ** \\
+  & \textbf{w = 2.0 (Default)} & \textbf{84.72 $\pm$ 2.15} & - & - & - & - \\
+  & w = 3.0 & 83.60 $\pm$ 2.33 & 0.0039 & -5.650 & 3762739.666 & ** \\
+\midrule
+\multicolumn{7}{l}{\textit{MoE Experts (E)}} \\
+  & E = 2 Experts & 81.34 $\pm$ 2.43 & 0.0039 & -10.991 & 100000000.000 & ** \\
+  & \textbf{E = 4 Experts (Default)} & \textbf{84.72 $\pm$ 2.15} & - & - & - & - \\
+  & E = 8 Experts & 84.96 $\pm$ 2.32 & 0.0156 & 1.247 & 31.614 & * \\
+\midrule
+\multicolumn{7}{l}{\textit{BFT Transforms (K)}} \\
+  & K = 1 (No TTA) & 78.31 $\pm$ 2.54 & 0.0039 & -15.277 & 100000000.000 & ** \\
+  & K = 2 Transforms & 81.59 $\pm$ 2.41 & 0.0039 & -11.078 & 100000000.000 & ** \\
+  & K = 4 Transforms & 83.70 $\pm$ 2.33 & 0.0039 & -5.147 & 1665465.726 & ** \\
+  & \textbf{K = 6 Transforms (Default)} & \textbf{84.72 $\pm$ 2.15} & - & - & - & - \\
+\midrule
+\multicolumn{7}{l}{\textit{Synthetic Ratio (alpha)}} \\
+  & alpha = 0.25 & 80.62 $\pm$ 2.45 & 0.0039 & -12.806 & 100000000.000 & ** \\
+  & alpha = 0.50 & 82.91 $\pm$ 2.39 & 0.0039 & -6.792 & 18973832.319 & ** \\
+  & \textbf{alpha = 1.00 (Default)} & \textbf{84.72 $\pm$ 2.15} & - & - & - & - \\
+  & alpha = 2.00 & 84.10 $\pm$ 2.33 & 0.0039 & -3.133 & 24325.607 & ** \\
+\bottomrule
+\end{tabular}
+\end{table*}

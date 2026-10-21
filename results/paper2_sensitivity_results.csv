@@ -1,0 +1,20 @@
+Category,Parameter,Configuration,Mean Accuracy (%),Std (%),Wilcoxon p-val,Cohen's d,Bayes Factor BF10,Significance
+DDIM Sampling Steps,DDIM Steps (S),S = 10,81.13,2.43,3.9062e-03,-11.890,100000000.000,**
+DDIM Sampling Steps,DDIM Steps (S),S = 25 (Default),84.72,2.15,1.0000,0.000,1.000,-
+DDIM Sampling Steps,DDIM Steps (S),S = 50,84.94,2.12,3.9062e-03,2.287,1961.982,**
+DDIM Sampling Steps,DDIM Steps (S),S = 100,85.04,2.12,3.9062e-03,3.316,38915.813,**
+Guidance Scale (w),Guidance (w),w = 0.0 (Uncond.),79.84,2.47,3.9062e-03,-14.114,100000000.000,**
+Guidance Scale (w),Guidance (w),w = 1.0,83.21,2.39,3.9062e-03,-5.667,3858138.605,**
+Guidance Scale (w),Guidance (w),w = 2.0 (Default),84.72,2.15,1.0000,0.000,1.000,-
+Guidance Scale (w),Guidance (w),w = 3.0,83.60,2.33,3.9062e-03,-5.650,3762739.666,**
+MoE Experts (E),Experts (E),E = 2 Experts,81.34,2.43,3.9062e-03,-10.991,100000000.000,**
+MoE Experts (E),Experts (E),E = 4 Experts (Default),84.72,2.15,1.0000,0.000,1.000,-
+MoE Experts (E),Experts (E),E = 8 Experts,84.96,2.32,1.5625e-02,1.247,31.614,*
+BFT Transforms (K),Transforms (K),K = 1 (No TTA),78.31,2.54,3.9062e-03,-15.277,100000000.000,**
+BFT Transforms (K),Transforms (K),K = 2 Transforms,81.59,2.41,3.9062e-03,-11.078,100000000.000,**
+BFT Transforms (K),Transforms (K),K = 4 Transforms,83.70,2.33,3.9062e-03,-5.147,1665465.726,**
+BFT Transforms (K),Transforms (K),K = 6 Transforms (Default),84.72,2.15,1.0000,0.000,1.000,-
+Synthetic Ratio (alpha),Syn. Ratio (alpha),alpha = 0.25,80.62,2.45,3.9062e-03,-12.806,100000000.000,**
+Synthetic Ratio (alpha),Syn. Ratio (alpha),alpha = 0.50,82.91,2.39,3.9062e-03,-6.792,18973832.319,**
+Synthetic Ratio (alpha),Syn. Ratio (alpha),alpha = 1.00 (Default),84.72,2.15,1.0000,0.000,1.000,-
+Synthetic Ratio (alpha),Syn. Ratio (alpha),alpha = 2.00,84.10,2.33,3.9062e-03,-3.133,24325.607,**

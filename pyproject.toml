@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "diffuzero-tta"
+version = "1.0.0"
+description = "Zero-Calibration EEG Motor Imagery Decoding via Resting-State Conditioned Latent Diffusion Augmentation and Backpropagation-Free Test-Time Adaptation"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "DiffuZero-TTA Research Team" }
+]
+keywords = [
+    "brain-computer-interface",
+    "motor-imagery-eeg",
+    "zero-calibration",
+    "latent-diffusion-models",
+    "test-time-adaptation",
+    "mixture-of-experts",
+    "backpropagation-free",
+    "deep-learning"
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+]
+dependencies = [
+    "torch>=2.0.0",
+    "numpy>=1.24.0",
+    "scipy>=1.10.0",
+    "scikit-learn>=1.2.0",
+    "pandas>=2.0.0",
+    "matplotlib>=3.7.0",
+    "seaborn>=0.12.0",
+    "pyyaml>=6.0",
+    "omegaconf>=2.3.0",
+    "einops>=0.6.0",
+    "mne>=1.5.0",
+    "moabb>=1.0.0"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/diffuzero-tta/diffuzero-tta"
+"Paper" = "https://arxiv.org/abs/2601.XXXXX"
+"Bug Tracker" = "https://github.com/diffuzero-tta/diffuzero-tta/issues"

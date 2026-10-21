@@ -1,0 +1,8 @@
+Category,Baseline Model,Baseline Acc (%),Proposed Acc (%),Gain (Delta),Shapiro-Wilk p,Normality,Primary Test,Test Stat,Raw p-value,Holm-Bonferroni p,FDR q,Cohen's d,Cliff's Delta,BF10,Bayesian Evidence,Significance
+Baseline,Ablation: Uniform BFT (No Ranker),33.44 ± 5.78,33.67 ± 6.78,+0.22%,0.2961,Normal,Paired Student's t-test,0.259,4.0067e-01,1.0000e+00,4.0067e-01,0.082 (negligible),0.000 (negligible),0.33,Favors null hypothesis,n.s.
+Baseline,Ablation: Spatial Jitter Only,33.01 ± 5.68,33.67 ± 6.78,+0.66%,0.0000,Non-normal,Wilcoxon Signed-Rank Test,3.000,2.5000e-01,1.0000e+00,2.9167e-01,0.444 (small),0.200 (small),0.85,Favors null hypothesis,n.s.
+Baseline,Ablation: Phase Shift Only,33.00 ± 5.67,33.67 ± 6.78,+0.66%,0.0000,Non-normal,Wilcoxon Signed-Rank Test,3.000,2.5000e-01,1.0000e+00,2.9167e-01,0.444 (small),0.200 (small),0.85,Favors null hypothesis,n.s.
+Baseline,Ablation: Spectral Mask Only,33.00 ± 5.67,33.67 ± 6.78,+0.66%,0.0000,Non-normal,Wilcoxon Signed-Rank Test,3.000,2.5000e-01,1.0000e+00,2.9167e-01,0.444 (small),0.200 (small),0.85,Favors null hypothesis,n.s.
+Baseline,Ablation: Time Warp Only,33.00 ± 5.67,33.67 ± 6.78,+0.66%,0.0000,Non-normal,Wilcoxon Signed-Rank Test,3.000,2.5000e-01,1.0000e+00,2.9167e-01,0.444 (small),0.200 (small),0.85,Favors null hypothesis,n.s.
+Baseline,Ablation: No TTA (EA-MoE Only),33.00 ± 5.67,33.67 ± 6.78,+0.67%,0.0000,Non-normal,Wilcoxon Signed-Rank Test,3.000,2.5000e-01,1.0000e+00,2.9167e-01,0.444 (small),0.200 (small),0.85,Favors null hypothesis,n.s.
+Baseline,"Ablation: Raw Unaligned (No EA, No TTA)",25.11 ± 0.89,33.67 ± 6.78,+8.56%,0.2644,Normal,Paired Student's t-test,3.828,2.0192e-03,1.4135e-02,1.4135e-02,1.211 (large),1.000 (large),39.67,Very strong evidence,*

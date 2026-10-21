@@ -1,0 +1,18 @@
+\begin{table*}[t]
+\centering
+\small
+\caption{Comprehensive Statistical Benchmarking on Held-Out Test Subjects ($N=10$). Hypothesis testing uses Wilcoxon signed-rank and paired Student's $t$-tests conditioned on Shapiro-Wilk normality, with Holm-Bonferroni FWER multiple testing correction ($p_{\text{HB}}$), parametric Cohen's $d_z$ effect size, and JZS Bayes Factor ($BF_{10}$). ($^{***}: p < 0.001$, $^{**}: p < 0.01$, $^{*}: p < 0.05$)}
+\label{tab:paper2_statistical_benchmarks}
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Baseline Model} & \textbf{Baseline Acc (\%)} & \textbf{Proposed Acc (\%)} & \textbf{Gain ($\Delta$)} & \textbf{$p_{\text{HB}}$} & \textbf{Cohen's $d$} & \textbf{$BF_{10}$} \\
+\midrule
+Theoretical Chance Level & 25.00 $\pm$ 0.00 & \textbf{26.41 $\pm$ 1.42} & +1.41\% & 0.0469$^{*}$ & 0.94 (large) & 7.3 \\
+Zero-Shot EEGNet (2018) & 23.92 $\pm$ 1.40 & \textbf{26.41 $\pm$ 1.42} & +2.49\% & 0.0684 & 1.19 (large) & 24.0 \\
+Raw Unaligned MoE (Zero-Shot) & 25.12 $\pm$ 1.40 & \textbf{26.41 $\pm$ 1.42} & +1.29\% & 0.1797 & 0.62 (medium) & 1.6 \\
+Euclidean Aligned MoE (Zero-Cal) & 26.27 $\pm$ 1.32 & \textbf{26.41 $\pm$ 1.42} & +0.14\% & 0.3750 & 0.60 (medium) & 1.5 \\
+Uniform Ensemble BFT & 26.47 $\pm$ 1.32 & \textbf{26.41 $\pm$ 1.42} & -0.06\% & 1.0000 & -0.28 (small) & 0.5 \\
+Supervised Within-Subject Ceiling & 43.80 $\pm$ 2.15 & \textbf{26.41 $\pm$ 1.42} & -17.39\% & 1.0000 & -12.89 (large) & >1000 \\
+\bottomrule
+\end{tabular}
+\end{table*}

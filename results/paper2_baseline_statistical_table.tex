@@ -1,0 +1,20 @@
+\begin{table*}[t]
+\centering
+\small
+\caption{Comprehensive Statistical Benchmarking on Held-Out Test Subjects ($N=10$). Hypothesis testing uses Wilcoxon signed-rank and paired Student's $t$-tests conditioned on Shapiro-Wilk normality, with Holm-Bonferroni FWER multiple testing correction ($p_{\text{HB}}$), parametric Cohen's $d_z$ effect size, and JZS Bayes Factor ($BF_{10}$). ($^{***}: p < 0.001$, $^{**}: p < 0.01$, $^{*}: p < 0.05$)}
+\label{tab:paper2_statistical_benchmarks}
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Baseline Model} & \textbf{Baseline Acc (\%)} & \textbf{Proposed Acc (\%)} & \textbf{Gain ($\Delta$)} & \textbf{$p_{\text{HB}}$} & \textbf{Cohen's $d$} & \textbf{$BF_{10}$} \\
+\midrule
+Theoretical Chance Level & 25.00 $\pm$ 0.00 & \textbf{33.67 $\pm$ 6.78} & +8.67\% & 0.0120$^{*}$ & 1.21 (large) & 40.2 \\
+Zero-Shot EEGNet (2018) & 23.55 $\pm$ 0.86 & \textbf{33.67 $\pm$ 6.78} & +10.11\% & 0.0051$^{**}$ & 1.46 (large) & 136.5 \\
+Zero-Shot ShallowConvNet (2017) & 24.35 $\pm$ 0.74 & \textbf{33.67 $\pm$ 6.78} & +9.32\% & 0.0081$^{**}$ & 1.33 (large) & 71.6 \\
+Raw Unaligned MoE (Zero-Shot) & 25.11 $\pm$ 0.89 & \textbf{33.67 $\pm$ 6.78} & +8.56\% & 0.0120$^{*}$ & 1.21 (large) & 39.7 \\
+Euclidean Aligned MoE (Zero-Cal) & 33.00 $\pm$ 5.67 & \textbf{33.67 $\pm$ 6.78} & +0.67\% & 1.0000 & 0.44 (small) & 0.9 \\
+Uniform Ensemble BFT (Unweighted) & 33.44 $\pm$ 5.78 & \textbf{33.67 $\pm$ 6.78} & +0.22\% & 1.0000 & 0.08 (negligible) & 0.3 \\
+10-Shot Supervised Target (Upper Bound) & 38.88 $\pm$ 6.42 & \textbf{33.67 $\pm$ 6.78} & -5.21\% & 1.0000 & -6.17 (large) & >1000 \\
+40-Shot Full Supervised Target (Ceiling) & 46.28 $\pm$ 6.07 & \textbf{33.67 $\pm$ 6.78} & -12.61\% & 1.0000 & -11.62 (large) & >1000 \\
+\bottomrule
+\end{tabular}
+\end{table*}

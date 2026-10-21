@@ -1,0 +1,17 @@
+\begin{table}[h]
+\centering
+\small
+\caption{Hardware Latency and Edge Adaptation Efficiency Comparison.}
+\label{tab:edge_latency}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Method} & \textbf{Adaptation Mode} & \textbf{GPU Latency} & \textbf{Edge Latency (RPi 4)} & \textbf{Memory Overhead} \\
+\midrule
+Zero-Shot EEGNet & None (Static) & 2.1 ms & 14.8 ms & Negligible \\
+TENT (ICLR 2021) & Gradient Backprop & 84.6 ms & 412.3 ms & +24.8 MB (Graph) \\
+SHOT (ICML 2020) & Gradient Backprop & 118.2 ms & 580.6 ms & +38.5 MB (Graph) \\
+\midrule
+\textbf{DiffuZero-TTA (Ours)} & \textbf{Backprop-Free} & \textbf{4.8 ms} & \textbf{26.4 ms} & \textbf{< 1.2 MB (Static)} \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,167 @@
+# ==============================================================================
+# Rest-Diff-BCI + MoE-BFT Configuration
+# Paper 2: Zero-Calibration Brain-Computer Interfaces
+# ==============================================================================
+
+project:
+  name: "Rest-Diff-BCI"
+  version: "0.1.0"
+  seed: 42
+  device: "auto" # "cuda", "cpu", or "auto"
+  num_workers: 4
+
+data:
+  data_dir: "c:/Users/Visha/Desktop/Cybernetics Motor/Motor"
+  sfreq: 160.0
+  n_channels: 64
+  tmin: 0.0
+  tmax: 4.0
+  n_samples: 640 # tmax * sfreq = 4.0 * 160
+  bandpass:
+    l_freq: 0.5
+    h_freq: 45.0
+  notch_freq: 60.0
+  
+  # Runs definition according to PhysioNet BCI protocol:
+  # Baseline: R01 (eyes open), R02 (eyes closed)
+  # Motor Imagery: R04, R08, R12 (left vs right fist)
+  #                R06, R10, R14 (both fists vs both feet)
+  baseline_runs: [1, 2]
+  mi_runs: [4, 6, 8, 10, 12, 14]
+  resting_window_sec: 30.0 # 30s passive resting segment for style extraction
+  resting_samples: 4800   # 30.0 * 160 = 4800 samples
+
+  # Subject partitioning (109 subjects total, excluding defective records)
+  excluded_subjects: [88, 92, 100]
+  train_subjects: [11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+  val_subjects: [1, 2, 3]
+  test_subjects: [6, 7, 8, 9, 10]
+  
+  classes:
+    0: "left_fist"
+    1: "right_fist"
+    2: "both_fists"
+    3: "both_feet"
+
+resting_encoder:
+  latent_dim: 64
+  in_channels: 64
+  n_fft: 128
+  hop_length: 32
+  freq_bands:
+    delta: [0.5, 4.0]
+    theta: [4.0, 8.0]
+    alpha: [8.0, 13.0]
+    beta: [13.0, 30.0]
+    gamma: [30.0, 45.0]
+  spatial_hidden_dims: [128, 64]
+  spectral_hidden_dims: [128, 64]
+  fusion_hidden_dim: 128
+  kl_weight: 1e-4
+  learning_rate: 3e-4
+  weight_decay: 1e-4
+
+latent_diffusion:
+  vqvae:
+    in_channels: 64
+    latent_channels: 16
+    downsample_factor: 4 # 640 -> 160 time steps
+    num_embeddings: 512
+    embedding_dim: 16
+    commitment_cost: 0.25
+    hidden_channels: [64, 128]
+  unet:
+    in_channels: 16
+    out_channels: 16
+    base_channels: 64
+    channel_mult: [1, 2, 4]
+    time_emb_dim: 128
+    style_emb_dim: 64
+    num_classes: 4
+    num_res_blocks: 2
+    dropout: 0.1
+    attention_resolutions: [20, 40]
+  diffusion:
+    timesteps: 1000
+    beta_schedule: "cosine" # "cosine" or "linear"
+    beta_start: 0.0001
+    beta_end: 0.02
+    ddim_steps: 20 # Fast sampling steps (4 to 20)
+    guidance_scale: 2.5 # Classifier-free guidance scale
+    uncond_prob: 0.15 # Unconditional dropout during training
+
+moe_backbone:
+  in_channels: 64
+  sequence_length: 640
+  num_classes: 4
+  num_experts: 4
+  expert_names:
+    - "left_hemisphere"
+    - "right_hemisphere"
+    - "midline"
+    - "global_coordinator"
+  expert_channels:
+    left_hemisphere: ["FC5", "FC3", "FC1", "C5", "C3", "C1", "CP5", "CP3", "CP1"]
+    right_hemisphere: ["FC6", "FC4", "FC2", "C6", "C4", "C2", "CP6", "CP4", "CP2"]
+    midline: ["FCZ", "CZ", "CPZ", "FZ", "PZ"]
+    global_coordinator: "all"
+  expert_hidden_dim: 64
+  gating:
+    type: "spatial_spectral_softmax"
+    hidden_dim: 64
+    temperature: 1.0
+    load_balance_loss_weight: 0.01
+  dropout: 0.25
+
+bft:
+  num_transformations: 6
+  transform_types:
+    - "spatial_jitter"
+    - "narrowband_phase_shift"
+    - "spectral_mask"
+    - "time_warp"
+    - "amplitude_scale"
+    - "channel_dropout"
+  params:
+    spatial_jitter_factor: 0.05
+    phase_shift_max: 0.5236 # pi/6
+    spectral_mask_bands:
+      - [0.5, 4.0]
+      - [32.0, 45.0]
+    time_warp_factor: 0.08
+    amplitude_scale_range: [0.85, 1.15]
+    channel_dropout_ratio: 0.10
+  ranker:
+    hidden_dim: 64
+    margin: 0.2
+    learning_rate: 5e-4
+    weight_decay: 1e-4
+  ensemble_method: "confidence_weighted" # "confidence_weighted", "top_k", or "uniform"
+
+training:
+  diffusion:
+    batch_size: 32
+    learning_rate: 2e-4
+    weight_decay: 1e-4
+    epochs: 100
+    grad_clip: 1.0
+    save_interval: 10
+    early_stopping_patience: 15
+  classifier:
+    batch_size: 64
+    learning_rate: 1e-3
+    weight_decay: 1e-3
+    epochs: 80
+    synthetic_ratio: 0.5 # 0.5 = 50% real + 50% diffusion synthetic
+    label_smoothing: 0.05
+    early_stopping_patience: 12
+
+evaluation:
+  protocols:
+    - "within_subject"
+    - "cross_subject_zero_shot"
+    - "rest_diff_zero_calibration"
+    - "bft_test_time_adaptation"
+    - "combined_rest_diff_plus_bft"
+  num_synthetic_trials_per_class: 100
+  checkpoint_dir: "c:/Users/Visha/Desktop/Cybernetics Motor/Paper2_DiffusionTTA/checkpoints"

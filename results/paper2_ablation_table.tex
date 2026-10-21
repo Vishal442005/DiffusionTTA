@@ -1,0 +1,19 @@
+\begin{table*}[t]
+\centering
+\small
+\caption{Comprehensive Statistical Benchmarking on Held-Out Test Subjects ($N=10$). Hypothesis testing uses Wilcoxon signed-rank and paired Student's $t$-tests conditioned on Shapiro-Wilk normality, with Holm-Bonferroni FWER multiple testing correction ($p_{\text{HB}}$), parametric Cohen's $d_z$ effect size, and JZS Bayes Factor ($BF_{10}$). ($^{***}: p < 0.001$, $^{**}: p < 0.01$, $^{*}: p < 0.05$)}
+\label{tab:paper2_statistical_benchmarks}
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Baseline Model} & \textbf{Baseline Acc (\%)} & \textbf{Proposed Acc (\%)} & \textbf{Gain ($\Delta$)} & \textbf{$p_{\text{HB}}$} & \textbf{Cohen's $d$} & \textbf{$BF_{10}$} \\
+\midrule
+Ablation: Uniform BFT (No Ranker) & 33.44 $\pm$ 5.78 & \textbf{33.67 $\pm$ 6.78} & +0.22\% & 1.0000 & 0.08 (negligible) & 0.3 \\
+Ablation: Spatial Jitter Only & 33.01 $\pm$ 5.68 & \textbf{33.67 $\pm$ 6.78} & +0.66\% & 1.0000 & 0.44 (small) & 0.9 \\
+Ablation: Phase Shift Only & 33.00 $\pm$ 5.67 & \textbf{33.67 $\pm$ 6.78} & +0.66\% & 1.0000 & 0.44 (small) & 0.9 \\
+Ablation: Spectral Mask Only & 33.00 $\pm$ 5.67 & \textbf{33.67 $\pm$ 6.78} & +0.66\% & 1.0000 & 0.44 (small) & 0.9 \\
+Ablation: Time Warp Only & 33.00 $\pm$ 5.67 & \textbf{33.67 $\pm$ 6.78} & +0.66\% & 1.0000 & 0.44 (small) & 0.9 \\
+Ablation: No TTA (EA-MoE Only) & 33.00 $\pm$ 5.67 & \textbf{33.67 $\pm$ 6.78} & +0.67\% & 1.0000 & 0.44 (small) & 0.9 \\
+Ablation: Raw Unaligned (No EA, No TTA) & 25.11 $\pm$ 0.89 & \textbf{33.67 $\pm$ 6.78} & +8.56\% & 0.0141$^{*}$ & 1.21 (large) & 39.7 \\
+\bottomrule
+\end{tabular}
+\end{table*}
