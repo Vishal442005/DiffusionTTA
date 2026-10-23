@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyTorch Lightning & Experiments
+lightning_logs/
+logs/
+*.log
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# OS Specific
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE & Editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Large Raw Datasets (PhysioNet raw EDF files)
+Motor/
+*.edf
+*.fif
+*.mat
+
+# Model weights
+*.ckpt
+*.pt
+*.pth
+
+# Research papers & documents (Strictly excluded)
+*.docx
+*.doc
+*.pdf
+manuscript/*.pdf
+manuscript/*.docx
+manuscript/*.doc
