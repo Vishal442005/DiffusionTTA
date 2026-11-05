@@ -284,7 +284,7 @@ Unlike gradient-based test-time adaptation methods (TENT, SHOT, MEMO) that manda
 | **TENT (Wang et al., 2021)** | Test-Time Gradient Descent | 142.5 ms | 412.0 ms | 48.2 MB | ❌ High Latency |
 | **SHOT (Liang et al., 2020)** | Pseudo-Label Gradient Descent | 168.0 ms | 485.4 ms | 56.4 MB | ❌ High Latency |
 | **MEMO (Zhang et al., 2022)** | Augmentation Entropy Gradients | 185.2 ms | 520.1 ms | 62.0 MB | ❌ High Latency |
-| **MoE-BFT (Ours)** | **Backprop-Free Consensus** | **8.4 ms** | **14.2 ms** | **0.0 MB** | **✅ Optimal Edge BCI** |
+| **MoE-BFT (Proposed)** | **Backprop-Free Consensus** | **8.4 ms** | **14.2 ms** | **0.0 MB** | **✅ Optimal Edge BCI** |
 
 Both GPU (8.4 ms) and CPU (14.2 ms) latencies comfortably operate well within the **50 ms clinical control threshold** for real-time neuroprosthetics.
 
@@ -297,7 +297,7 @@ If you use this repository, pre-trained weights, or the DiffuZero-TTA framework 
 ```bibtex
 @article{diffuzero2026,
   title={Zero-Calibration EEG Motor Imagery Decoding via Resting-State Conditioned Latent Diffusion Augmentation and Backpropagation-Free Test-Time Adaptation},
-  author={DiffuZero-TTA Research Team},
+  author={Chandel, Vishal},
   journal={IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)},
   year={2026},
   note={Under Review}

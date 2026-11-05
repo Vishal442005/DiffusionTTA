@@ -100,8 +100,16 @@ def generate_architecture_diagram():
     plt.tight_layout()
     arch_path = RESULTS_DIR / "paper2_system_architecture.png"
     plt.savefig(arch_path, bbox_inches='tight', dpi=300)
+    pdf_arch = arch_path.with_suffix(".pdf")
+    plt.savefig(pdf_arch, format="pdf", bbox_inches='tight', pad_inches=0.15)
     plt.close()
-    print(f"Saved: {arch_path}")
+    
+    root_arch = PROJECT_ROOT.parent / "paper2_system_architecture.png"
+    root_pdf_arch = PROJECT_ROOT.parent / "paper2_system_architecture.pdf"
+    import shutil
+    shutil.copy2(arch_path, root_arch)
+    shutil.copy2(pdf_arch, root_pdf_arch)
+    print(f"Saved: {arch_path} and {pdf_arch}")
 
 
 def generate_time_domain_waveforms():
@@ -125,46 +133,60 @@ def generate_time_domain_waveforms():
     real_c3, real_cz, real_c4 = make_eeg(is_right_hand=True, is_synthetic=False)
     synth_c3, synth_cz, synth_c4 = make_eeg(is_right_hand=True, is_synthetic=True)
 
-    fig, axes = plt.subplots(3, 2, figsize=(14, 7), sharex=True, sharey=True, dpi=300)
+    fig, axes = plt.subplots(3, 2, figsize=(10.5, 6.2), sharex=True, sharey=True, dpi=300)
 
     # Real EEG column
-    axes[0, 0].plot(time, real_c3, color='#1e40af', lw=1.2)
-    axes[0, 0].set_title("Real EEG: Electrode C3 (Contralateral $\mu$-Suppression)", fontsize=11, fontweight='bold')
-    axes[0, 0].set_ylabel("Amplitude ($\mu$V)", fontsize=10)
-    axes[0, 0].grid(True, linestyle="--", alpha=0.4)
+    axes[0, 0].plot(time, real_c3, color='#1e40af', lw=1.6)
+    axes[0, 0].set_title("Real EEG: Electrode C3 (Contralateral $\mu$-Suppression)", fontsize=14.5, fontweight='bold', pad=8)
+    axes[0, 0].set_ylabel("Amplitude ($\mu$V)", fontsize=13.5, fontweight='bold', labelpad=6)
+    axes[0, 0].tick_params(axis="both", labelsize=12.5)
+    axes[0, 0].grid(True, linestyle="--", alpha=0.5)
 
-    axes[1, 0].plot(time, real_cz, color='#475569', lw=1.2)
-    axes[1, 0].set_title("Real EEG: Electrode Cz (Central Vertex)", fontsize=11, fontweight='bold')
-    axes[1, 0].set_ylabel("Amplitude ($\mu$V)", fontsize=10)
-    axes[1, 0].grid(True, linestyle="--", alpha=0.4)
+    axes[1, 0].plot(time, real_cz, color='#475569', lw=1.6)
+    axes[1, 0].set_title("Real EEG: Electrode Cz (Central Vertex)", fontsize=14.5, fontweight='bold', pad=8)
+    axes[1, 0].set_ylabel("Amplitude ($\mu$V)", fontsize=13.5, fontweight='bold', labelpad=6)
+    axes[1, 0].tick_params(axis="both", labelsize=12.5)
+    axes[1, 0].grid(True, linestyle="--", alpha=0.5)
 
-    axes[2, 0].plot(time, real_c4, color='#b91c1c', lw=1.2)
-    axes[2, 0].set_title("Real EEG: Electrode C4 (Ipsilateral Intact $\mu$-Rhythm)", fontsize=11, fontweight='bold')
-    axes[2, 0].set_ylabel("Amplitude ($\mu$V)", fontsize=10)
-    axes[2, 0].set_xlabel("Time (seconds)", fontsize=10)
-    axes[2, 0].grid(True, linestyle="--", alpha=0.4)
+    axes[2, 0].plot(time, real_c4, color='#b91c1c', lw=1.6)
+    axes[2, 0].set_title("Real EEG: Electrode C4 (Ipsilateral Intact $\mu$-Rhythm)", fontsize=14.5, fontweight='bold', pad=8)
+    axes[2, 0].set_ylabel("Amplitude ($\mu$V)", fontsize=13.5, fontweight='bold', labelpad=6)
+    axes[2, 0].set_xlabel("Time (seconds)", fontsize=13.5, fontweight='bold', labelpad=6)
+    axes[2, 0].tick_params(axis="both", labelsize=12.5)
+    axes[2, 0].grid(True, linestyle="--", alpha=0.5)
 
     # Synthetic EEG column
-    axes[0, 1].plot(time, synth_c3, color='#7c3aed', lw=1.2)
-    axes[0, 1].set_title("Synthetic LDM EEG: Electrode C3", fontsize=11, fontweight='bold')
-    axes[0, 1].grid(True, linestyle="--", alpha=0.4)
+    axes[0, 1].plot(time, synth_c3, color='#7c3aed', lw=1.6)
+    axes[0, 1].set_title("Synthetic LDM EEG: Electrode C3", fontsize=14.5, fontweight='bold', pad=8)
+    axes[0, 1].tick_params(axis="both", labelsize=12.5)
+    axes[0, 1].grid(True, linestyle="--", alpha=0.5)
 
-    axes[1, 1].plot(time, synth_cz, color='#64748b', lw=1.2)
-    axes[1, 1].set_title("Synthetic LDM EEG: Electrode Cz", fontsize=11, fontweight='bold')
-    axes[1, 1].grid(True, linestyle="--", alpha=0.4)
+    axes[1, 1].plot(time, synth_cz, color='#64748b', lw=1.6)
+    axes[1, 1].set_title("Synthetic LDM EEG: Electrode Cz", fontsize=14.5, fontweight='bold', pad=8)
+    axes[1, 1].tick_params(axis="both", labelsize=12.5)
+    axes[1, 1].grid(True, linestyle="--", alpha=0.5)
 
-    axes[2, 1].plot(time, synth_c4, color='#dc2626', lw=1.2)
-    axes[2, 1].set_title("Synthetic LDM EEG: Electrode C4", fontsize=11, fontweight='bold')
-    axes[2, 1].set_xlabel("Time (seconds)", fontsize=10)
-    axes[2, 1].grid(True, linestyle="--", alpha=0.4)
+    axes[2, 1].plot(time, synth_c4, color='#dc2626', lw=1.6)
+    axes[2, 1].set_title("Synthetic LDM EEG: Electrode C4", fontsize=14.5, fontweight='bold', pad=8)
+    axes[2, 1].set_xlabel("Time (seconds)", fontsize=13.5, fontweight='bold', labelpad=6)
+    axes[2, 1].tick_params(axis="both", labelsize=12.5)
+    axes[2, 1].grid(True, linestyle="--", alpha=0.5)
 
     plt.suptitle("Qualitative Time-Domain Waveform Fidelity: Real vs. Synthetic EEG (Right-Hand Imagery)",
-                 fontsize=13, fontweight='bold', y=1.01)
+                 fontsize=15.5, fontweight='bold', y=0.99)
     plt.tight_layout()
     wave_path = RESULTS_DIR / "paper2_time_domain_waveforms.png"
-    plt.savefig(wave_path, bbox_inches='tight', dpi=300)
+    plt.savefig(wave_path, bbox_inches='tight', pad_inches=0.15, dpi=300)
+    pdf_path = wave_path.with_suffix(".pdf")
+    plt.savefig(pdf_path, format="pdf", bbox_inches='tight', pad_inches=0.15)
     plt.close()
-    print(f"Saved: {wave_path}")
+    
+    root_path = PROJECT_ROOT.parent / "paper2_time_domain_waveforms.png"
+    root_pdf = PROJECT_ROOT.parent / "paper2_time_domain_waveforms.pdf"
+    import shutil
+    shutil.copy2(wave_path, root_path)
+    shutil.copy2(pdf_path, root_pdf)
+    print(f"Saved: {wave_path} and {pdf_path}, copied to root")
 
 
 def generate_confusion_matrix():

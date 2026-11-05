@@ -1,0 +1,25 @@
+{
+  "title": "Vishal442005/DiffusionTTA: DiffusionTTA v1.1.0: Camera-Ready Publication & Official Research Release",
+  "upload_type": "software",
+  "description": "Official camera-ready implementation and empirical benchmarking suite for DiffuZero-TTA: Zero-Calibration EEG Motor Imagery Decoding via Resting-State Conditioned Latent Diffusion Augmentation and Backpropagation-Free Test-Time Adaptation.",
+  "creators": [
+    {
+      "name": "Chandel, Vishal",
+      "affiliation": "Cybernetics Motor Research Foundation",
+      "orcid": "0009-0006-0552-8551"
+    }
+  ],
+  "access_right": "open",
+  "license": "mit",
+  "keywords": [
+    "Brain-Computer Interfaces",
+    "Electroencephalography",
+    "Motor Imagery",
+    "Zero-Calibration",
+    "Latent Diffusion Models",
+    "Test-Time Adaptation",
+    "Riemannian Manifold Geometry",
+    "Mixture of Experts"
+  ],
+  "version": "1.1.0"
+}

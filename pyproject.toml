@@ -4,13 +4,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "diffuzero-tta"
-version = "1.0.0"
+version = "1.1.0"
 description = "Zero-Calibration EEG Motor Imagery Decoding via Resting-State Conditioned Latent Diffusion Augmentation and Backpropagation-Free Test-Time Adaptation"
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [
-    { name = "DiffuZero-TTA Research Team" }
+    { name = "Vishal Chandel", email = "vishal442005@outlook.com" }
 ]
 keywords = [
     "brain-computer-interface",
@@ -49,6 +49,6 @@ dependencies = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/diffuzero-tta/diffuzero-tta"
+"Homepage" = "https://github.com/Vishal442005/DiffusionTTA"
 "Paper" = "https://arxiv.org/abs/2601.XXXXX"
-"Bug Tracker" = "https://github.com/diffuzero-tta/diffuzero-tta/issues"
+"Bug Tracker" = "https://github.com/Vishal442005/DiffusionTTA/issues"
